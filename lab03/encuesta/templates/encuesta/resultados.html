@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de la encuesta</title>
+</head>
+<body>
+    <h1>{{ pregunta.pregunta_texto }}</h1>
+
+    <h2>Resultados de la votación</h2>
+
+    <ul>
+        {% for opcion in pregunta.opcion_set.all %}
+            <li>
+                {{ opcion.opcion_texto }}:
+                {{ opcion.votos }} voto{{ opcion.votos|pluralize }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'detalle' pregunta.id %}">
+        Volver a votar
+    </a>
+</body>
+</html>

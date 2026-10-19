@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Encuesta</title>
+</head>
+<body>
+    <h1>Preguntas disponibles</h1>
+
+    {% if ultimas_preguntas %}
+        <ul>
+            {% for pregunta in ultimas_preguntas %}
+                <li>
+                    <a href="{% url 'detalle' pregunta.id %}">
+                        {{ pregunta.pregunta_texto }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay preguntas disponibles.</p>
+    {% endif %}
+</body>
+</html>
